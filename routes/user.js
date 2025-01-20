@@ -7,12 +7,7 @@ router.get("/dashbord", dashbord);
 
 router.post("/submitform", submitform);
 
-router.post("/signup", (req, res) => {
-    console.log("Signup route hit");
-    // Your signup logic here
-    res.send('Signup successful');
-});
-
+router.post("/signup", signup);
 
 router.post("/login", login);
 
