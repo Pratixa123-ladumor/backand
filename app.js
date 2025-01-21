@@ -8,11 +8,7 @@ require("./db")();
 const app = express();
 app.use(cors());
 
-app.use(cors({
-    origin: 'http://localhost:3000', // Aapke frontend ka URL
-    methods: ['GET', 'POST'], // Allowed methods
-    credentials: true, // Allow cookies (optional)
-}));
+app.use(cors());
 
 
 app.use(express.json());
