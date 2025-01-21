@@ -27,6 +27,7 @@ const dashbord = async (req, res) => {
 
 
 const signup = async (req, res) => {
+    console.log(req.body);
     try {
         const { firstname, lastname, email, password } = req.body;
         const user = await User.findOne({ email });
@@ -35,17 +36,16 @@ const signup = async (req, res) => {
         }
         const hashPassword = await bcryptjs.hash(password, 10);
         const createdUser = new User({
-            firstname: firstname, lastname: lastname, email: email, password: hashPassword,
+            firstname, lastname, email, password: hashPassword,
         });
         await createdUser.save();
-        res.status(200).json({
-            message: "User created successfully",
-        });
+        res.status(200).json({ message: "User created successfully" });
     } catch (error) {
         console.log("Error: " + error.message);
         res.status(400).json({ message: "Internal server error" });
     }
 };
+
 
 
 
