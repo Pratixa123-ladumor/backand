@@ -1,14 +1,14 @@
+require('dotenv').config();
 const { connect } = require("mongoose");
 
-
 function dbConnection() {
-
-    connect("mongodb://localhost:27017/Videshivibe")
+    const dbURI = process.env.MONGODB_URI || "mongodb://localhost:27017/Videshivibe"; // Fallback to localhost for development
+    connect(dbURI)
         .then(() => {
-            console.log("database connected");
+            console.log("Database connected");
         })
-        .catch(() => {
-            console.log("connection failed");
+        .catch((error) => {
+            console.error("Connection failed:", error.message);
         });
 }
 
