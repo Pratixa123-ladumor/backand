@@ -1,9 +1,8 @@
 const { connect } = require("mongoose");
 
-
 function dbConnection() {
 
-    connect("mongodb://localhost:27017/Videshivibe")
+    connect(process.env.MONGO_URI)
         .then(() => {
             console.log("database connected");
         })
