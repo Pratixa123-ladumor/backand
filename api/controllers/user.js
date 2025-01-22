@@ -16,6 +16,15 @@ const submitform = async (req, res) => {
     }
 };
 
+const getform = async (req, res) => {
+    try {
+        const user = await Submit.find();
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(400).send('Error fetching user')
+    }
+}
+
 const dashbord = async (req, res) => {
     try {
         const user = await User.find();
@@ -80,6 +89,7 @@ const login = async (req, res) => {
 module.exports = {
     submitform,
     dashbord,
+    getform,
     signup,
     login
 };
