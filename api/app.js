@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.get("/", (req, res) => {
-    res.send("<h1>Videshivibe</h1>");
+    res.send("<h1>Videshivibe Master</h1>");
 });
 
 
