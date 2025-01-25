@@ -71,11 +71,32 @@ const login = async (req, res) => {
 };
 
 
+const update = async (req, res) => {
+    try {
+        const user = await Submit.findByIdAndUpdat(req.params.id);
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(400).send('Error fetching user')
+    }
+}
+
+
+const remove = async (req, res) => {
+    try {
+        const user = await Blog.findByIdAndDelete(req.params.id);
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(400).send('Error deleting blog');
+    }
+};
+
 
 module.exports = {
     submitform,
     dashbord,
     getform,
     signup,
-    login
+    login,
+    update,
+    remove
 };
