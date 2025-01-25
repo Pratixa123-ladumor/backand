@@ -13,8 +13,8 @@ router.post("/signup", signup);
 
 router.post("/login", login);
 
-router.post("/update/:id" , update);
+router.patch("/update/:id" , update);
 
-router.post("/remove/:id" , remove);
+router.delete("/remove/:id" , remove);
 
 module.exports = router;
