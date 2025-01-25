@@ -73,22 +73,24 @@ const login = async (req, res) => {
 
 const update = async (req, res) => {
     try {
-        const user = await Submit.findByIdAndUpdat(req.params.id);
-        res.status(200).json(user);
+        const user = await Submit.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true });
+        return res.status(200).json({ data: user });
+
     } catch (error) {
-        res.status(400).send('Error fetching user')
+        return res.status(400).json({ message: error?.message });
     }
 }
 
-
 const remove = async (req, res) => {
     try {
-        const user = await Blog.findByIdAndDelete(req.params.id);
-        res.status(200).json(user);
+        const user = await Submit.findByIdAndDelete(req.params.id);
+        return res.status(200).json({ data: user });
+
     } catch (error) {
-        res.status(400).send('Error deleting blog');
+        return res.status(400).json({ message: error?.message });
     }
-};
+}
+
 
 
 module.exports = {
